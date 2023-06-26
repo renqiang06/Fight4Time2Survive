@@ -4,9 +4,16 @@
 <head>
 
     <meta charset="UTF-8">
+    <!-- <meta http-equiv="refresh" content="10"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fight4Time2Survive</title>
+    <title>⌚</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <style>
+        a {
+            TEXT-DECORATION: none
+        }
+    </style>
     <style>
         html,
         body {
@@ -17,28 +24,42 @@
             position: relative;
             height: 100%;
             width: 100%;
-            background-image: url(https://api.dujin.org/bing/m.php);
-            /* background-image: url(http://bing.getlove.cn/bingImage); */
+            /* background-image: url(https://api.dujin.org/bing/m.php); */
+            /* background-image: url(http://bing.getlove.cn/bingImage/); */
             /* background-image: url("./img/bg.jpg"); */
-            background-size: cover;
+            /* background-size: cover; */
+            background-size: 100% 100%;
             background-position: center;
+            background-attachment: fixed;
         }
 
         .wrap-son {
             width: 100%;
             height: 100%;
             position: absolute;
+            /* position: relative; */
             top: 0;
             background: rgba(59, 59, 59, 0.3);
         }
 
         .jumbotron {
+            width: 100%;
+            height: 100%;
             background: rgba(255, 255, 255, 0);
             color: #f5f5f5;
         }
 
         .timer b {
             font-size: 70px;
+        }
+
+        .timer c {
+            font-size: 60px;
+        }
+
+        .timer d {
+            font-size: 60px;
+            font-weight: bold;
         }
 
         .Tfont {
@@ -48,6 +69,73 @@
             font-style: normal;
 
         }
+
+
+        @keyframes muiscIconRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        video {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* margin: 0px; */
+            object-fit: cover;
+            padding: 0px;
+            z-index: -99;
+            /* overflow-clip-margin: content-box; */
+            /* overflow: clip; */
+        }
+
+        .hitokoto a {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-pack: center;
+            -webkit-box-align: center; 
+            overflow: hidden;
+            height: calc(1em * 2 * 1);
+            min-height: calc(12px * 2 * 1);
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: snow;
+            /* text-decoration: none; */
+        }
+
+        .button {
+            /* background: transparent; */
+            background: rgba(255, 250, 250, 0.15);
+            height: auto;
+            position: relative;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: snow;
+            line-height: 590rpx;
+            border: 10px solid rgba(245, 245, 245, 0);
+            border-width: 10px;
+            border-radius: 20px;
+            z-index: 9999;
+        }
+
+        .footer {
+            position: fixed;
+            font-size: 18px;
+            text-align: center;
+            bottom: 0px;
+            width: 100%;
+            height: 30px;
+            color: snow;
+            background-color: #f9f7f700;
+            z-index: 9999;
+        }
     </style>
 </head>
 
@@ -55,32 +143,108 @@
     <div class="wrap">
         <div class="wrap-son">
             <div class="container-fluid">
+
                 <div class="box">
-                    <div class="jumbotron text-center">
-                        <h1 class="Tfont">Fight for time to survive</h1>
-                        <h3 class="timer">
-                            <div class="row">
+
+                    <!-- 视频背景图 -->
+                    <video id="video" poster="https://api.dujin.org/bing/m.php" autoplay loop muted>
+                        <!-- <video id="video" autoplay loop muted> -->
+                        <source src="./img/video-earth.mp4" type="video/mp4" />
+                    </video>
+                    <div id="jump" class="jumbotron text-center">
+                        <h4 class="hitokoto">
+                            <a id="hitokoto_text">&nbsp</a>
+                        </h4>
+                        <!-- <h1 class="Tfont">Life Length</h1> -->
+                        <HR style="FILTER: alpha(opacity=50,finishopacity=0,style=3)" width="95%" color=#987cb9 SIZE=1>
+                        <h5 class="timer">
+                            <!-- <div class="row">
                                 <b id="Y"></b> 年
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <b id="d"></b> 天 <b id="h"></b> 时 <b id="m"></b> 分
                             </div>
                             <div class="row">
                                 <b id="s"></b> 秒
                             </div>
-                        </h3>
-                        <canvas id="c"></canvas>
 
+                            <HR style="FILTER: alpha(opacity=50,finishopacity=0,style=3)" width="95%" color=#987cb9
+                                SIZE=1>
+                        </h5>
+
+                        <div>\&nbsp&nbsp|&nbsp&nbsp/</div>
+                        <div>\|/</div>
+                        <div>↓</div>
+                        <h4>
+                            <div class="row">
+                                <d>2070/01/01</d>
+                            </div>
+                        </h4>
+                        <!-- 音乐 -->
+                        <div id="app">&nbsp</div>
+                        <br />
+                        <div>&nbsp</div>
+                        <!-- <div align="center">
+                            <img src="img/QR.png" height="60px" width="60px " />
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <h5>
+        <div class="footer">
+            <c id="nowTime"></c>
+        </div>
+    </h5>
+    <!-- 音乐 -->
+    
+    <script src="./js/muisc_play.js"></script>
+    <script>
+        SMmuiscPlay({
+            el: "app",
+            // buttonImgSrc: "./img/m_logo.png",
+            audioUrl: "https://music.163.com/song/media/outer/url?id=1380655803.mp3",
+            // position: "margin: auto;",
+            animaClass: "muiscIconRotate"
+        }); 
+    </script>
+    <!-- 按钮单击 -->
+    <script>
+        function clickme() {
+            // alert("123");
+            javascript: location.reload()
+        }
+    </script>
+    <!--光标之泡泡-->
+    <!-- <script type="text/javascript" src="js/bubbleCursor.js"></script> -->
+    <!--光标特效仙女棒-->
+    <!-- <script type="text/javascript" src="js/fairyDustCursor.js"></script> -->
+    <!--鼠标单击之爱心-->
+    <script type="text/javascript" src="js/clicklove.js"></script>
+    <!--蜘蛛网-->
+    <script type="text/javascript" src="js/spiderwebs.js"></script>
+    <!-- 每日一言 -->
+    <script>
+        function words() {
+            fetch('https://v1.hitokoto.cn')
+                .then(response => response.json())
+                .then(data => {
+                    const hitokoto = document.querySelector('#hitokoto_text')
+                    hitokoto.innerText = data.hitokoto
+                })
+                .catch(console.error)
+        }
+        words();
+        setInterval(words, 5000);
+    </script>
+
     <!-- 计时器 -->
     <script>
         function timer() {
-            var retireDate = new Date("2070-1-2 00:00:00"); 
-            var t = retireDate - new Date().getTime();//原作者有bug，需添加.getTime();
+            var retireDate = new Date("2070-1-1 00:00:00");
+            var t =retireDate- new Date().getTime();
             // 秒
             var s = ~~((t / 1000) % 60);
             if (s < 10) {
@@ -97,22 +261,35 @@
                 h = "0" + h;
             }
             // 日
-            var d = ~~((t / 1000 / 60 / 60 / 24) % 365);
+            // var d = ~~((t / 1000 / 60 / 60 / 24) % 365);
+            var d = ~~(t / 1000 / 60 / 60 / 24);
 
             // 年
-            var Y = ~~(t / 1000 / 60 / 60 / 24 /365);
-            
+            var Y = retireDate.getFullYear() -new Date().getFullYear();
 
-            document.getElementById('Y').innerHTML = Y;
+            //当前
+            var nowTime = new Date().toLocaleString();
+            //当前ms
+            var nowTimems = new Date().getMilliseconds();
+            if (nowTimems < 10) {
+                nowTimems = "00" + nowTimems;
+            }
+            else if (nowTimems >= 10 & nowTimems < 100) {
+                nowTimems = "0" + nowTimems;
+            }
+            // document.getElementById('Y').innerHTML = Y;
             document.getElementById('d').innerHTML = d;
             document.getElementById('h').innerHTML = h;
             document.getElementById('m').innerHTML = m;
             document.getElementById('s').innerHTML = s;
+            document.getElementById('nowTime').innerHTML = nowTime + " : " + nowTimems;
         }
         timer();
-        setInterval(timer, 1000);
+        // setInterval(timer, 333);
+        setInterval(timer, 33);
     </script>
 
 </body>
+
 
 </html>
